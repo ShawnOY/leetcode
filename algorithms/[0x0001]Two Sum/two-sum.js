@@ -1,10 +1,20 @@
-const twoSum = function(nums, target) {
-    const len = nums.length;
+/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number[]}
+ */
+const twoSum = function (nums, target) {
+  const map = new Map()
 
-    for(let x = 0; x < len; x++) {
-        for(let y =0; y < len; y++) {
-            if (x === y) continue;
-            if (nums[x] + nums[y] === target) return [x, y];
-        }
+  for (let index in nums) {
+    map.set(nums[index], index)
+  }
+
+  for (let index in nums) {
+    let complement = target - nums[index]
+
+    if (map.has(complement) && map.get(complement) !== index) {
+      return [parseInt(index), parseInt(map.get(complement))]
     }
-};
+  }
+}
