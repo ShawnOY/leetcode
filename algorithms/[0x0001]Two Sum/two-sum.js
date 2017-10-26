@@ -5,16 +5,17 @@
  */
 const twoSum = function (nums, target) {
   const map = new Map()
+  let complement
 
   for (let index in nums) {
     map.set(nums[index], index)
   }
 
   for (let index in nums) {
-    let complement = target - nums[index]
+    complement = target - nums[index]
 
     if (map.has(complement) && map.get(complement) !== index) {
-      return [parseInt(index), parseInt(map.get(complement))]
+      return [index, map.get(complement)].map(Number)
     }
   }
 }
